@@ -1,292 +1,114 @@
-# 🛒 DMart Retail Analytics
+# 🛒 DMart Retail Analytics | End-to-End Data Analytics Project
 
 ## 📌 Project Overview
 
-This project analyzes DMart retail data to understand **sales performance, product pricing, discount patterns, category and brand performance, customer behavior, inventory levels, store characteristics, and payment outcomes**.
+This project analyzes DMart-inspired retail datasets to explore product pricing, discount patterns, category and brand comparisons, inventory levels, customer demographics, store characteristics, and payment outcomes.
 
-The project demonstrates an end-to-end Data Analyst workflow using:
+The project demonstrates an end-to-end Data Analyst workflow using **Microsoft Excel, PostgreSQL/SQL, Python (Pandas), and Power BI**. It includes data exploration, data quality checks, analytical queries, dashboard development, and business-oriented interpretation.
 
-- **PostgreSQL / SQL**
-- **Python / Pandas**
-- **Power BI**
-- **Microsoft Excel**
+**Important data limitation:** The sales/pricing dataset contains product-level records rather than verified sales transactions. Price-based totals in this project are sums of the available price fields and should not be interpreted as confirmed business revenue, completed orders, or units sold.
 
-The objective is to transform raw retail data into meaningful business insights through data cleaning, SQL analysis, exploratory analysis, KPI development, pivot analysis, and interactive dashboards.
+## 🎯 Project Objectives
 
----
+- Analyze product pricing and discounted prices.
+- Compare discounts across product categories and brands.
+- Identify categories and products with higher recorded price totals.
+- Examine available inventory and store information.
+- Explore customer and payment datasets within the limits of their available fields.
+- Perform data quality checks for missing values, duplicate records, and invalid prices.
+- Develop interactive Power BI dashboards and an Excel dashboard.
+- Demonstrate practical SQL, Python/Pandas, Excel, and Power BI skills.
 
-## 🎯 Business Objectives
+## 🗂️ Dataset Overview
 
-The project focuses on answering key business questions such as:
+The project uses DMart-inspired retail datasets, including the following tables or datasets:
 
-- Which categories generate the highest sales?
-- Which brands contribute the highest sales?
-- Which products generate the highest sales?
-- Which products have the highest total discounts?
-- What is the overall discount level across transactions?
-- Which categories show stronger pricing and discount patterns?
-- Which products require higher discounting?
-- Which inventory items have low stock levels?
-- How does stock compare with reorder levels across warehouses?
-- How are customers distributed by gender, age, state, and membership type?
-- Which payment methods are most commonly used?
-- What proportion of payments are successful, failed, or refunded?
-- Which stores and regions have larger store footprints?
+| Dataset | Purpose |
+|---|---|
+| `Sales_Transactions` | Product names, brands, original prices, discounted prices, quantity information, and categories |
+| `Customers` | Available customer-related attributes |
+| `Inventories` | Available inventory and store-related records |
+| `Payments` | Available payment-related records |
+| `Stores` | Store attributes and identifiers |
+| `Suppliers` | Supplier-related information |
 
----
+The sales/pricing dataset contains **5,189 source records**.
 
-## 📊 Dataset
+### Data Limitations and Metric Interpretation
 
-The project uses multiple retail datasets covering sales, customers, inventory, payments, stores, and suppliers.
+- The source sales/pricing dataset contains 5,189 records.
+- The available fields do not establish verified sales dates, actual units sold, or transaction-level revenue.
+- The `Quantity` field contains package or unit descriptions in the available data and should not automatically be treated as the number of units sold.
+- Data-cleaning steps can cause the number of records analyzed in Python to differ from the source record count.
+- The customer, inventory, payment, store, and sales datasets have limited matching keys. Cross-table relationships and comparisons are therefore restricted to supported fields and valid relationships.
+- Metrics labelled **Total Sales** in the dashboards represent sums of available discounted-price values, not confirmed business revenue.
+- Price totals and averages are descriptive measures of the available records, not verified financial performance.
 
-### Main Tables
+## 🛠️ Tools and Technologies
 
-| Table | Description |
-|------|-------------|
-| `Sales_Transactions` | Product-level sales and pricing information |
-| `Customers` | Customer demographic and membership information |
-| `Inventories` | Product inventory and stock information |
-| `Payments` | Payment method and payment status information |
-| `Stores` | Store location, size, region, and age information |
-| `Suppliers` | Supplier information |
+| Tool | Application |
+|---|---|
+| Microsoft Excel | Data cleaning, formulas, PivotTables, analysis, and dashboard creation |
+| PostgreSQL | Data exploration, aggregation, filtering, joins, subqueries, and analytical SQL |
+| Python | Data analysis and data cleaning using Pandas |
+| Power BI | Data modelling, DAX measures, interactive visuals, and dashboard development |
+| GitHub | Version control, documentation, and portfolio presentation |
 
-The `Sales_Transactions` dataset contains **5,189 records**.
+## 📊 Project Components
 
-### Sales Transaction Fields
+### 1. Microsoft Excel Analysis
 
-- Sales Transaction ID
-- Product Name
-- Brand
-- Original Price
-- Discounted Price
-- Quantity / Pack Size
-- Category
+**File:** [`Excel/DMart_Retail_Analytics_Excel.xlsx`](Excel/DMart_Retail_Analytics_Excel.xlsx)
 
----
+The Excel workbook includes:
 
-## 🛠️ Tools & Technologies
+- `Raw_Data` — source data.
+- `Data_Cleaning` — data quality checks and preparation.
+- `Analysis` — formula-based analysis.
+- `Pivot_Analysis` — PivotTables and comparisons.
+- `Dashboard` — consolidated visual summary.
 
-| Tool | Purpose |
-|------|---------|
-| **PostgreSQL / SQL** | Data exploration, cleaning checks, aggregation, joins, subqueries, CTEs, window functions and business analysis |
-| **Python / Pandas** | Data cleaning, exploratory analysis, feature engineering and visualization |
-| **Power BI** | Data modelling, DAX measures, KPI development and interactive dashboards |
-| **Microsoft Excel** | Data quality checks, formula-based analysis, PivotTables, PivotCharts and dashboard creation |
-| **GitHub** | Version control, documentation and portfolio presentation |
+**Key activities:**
+- Reviewed product prices and discounts.
+- Used formulas to calculate relevant metrics.
+- Analyzed categories and brands using PivotTables.
+- Created a dashboard to summarize the available data.
 
----
+**Excel dashboard preview:**
 
-# 🔍 SQL Analysis
+![DMart Retail Analytics Excel Dashboard](Excel/DMart-Retail-Analytics_Dashboard.png)
 
-The SQL analysis was performed using PostgreSQL.
+### 2. SQL Analysis — PostgreSQL
 
-The project includes **50 SQL business analysis queries** covering:
+**File:** [`SQL/DMart_Retail_Analytics.sql`](SQL/DMart_Retail_Analytics.sql)
 
+The SQL script contains 50 analytical queries covering data exploration, aggregation, pricing, discounts, and data quality.
+
+**SQL concepts demonstrated:**
+- `SELECT`, `WHERE`, `ORDER BY`, and `DISTINCT`
+- Aggregate functions: `SUM`, `AVG`, `MIN`, and `MAX`
+- `GROUP BY` and `HAVING`
+- `CASE WHEN` conditional logic
+- Joins and subqueries
+- Common Table Expressions (CTEs)
+- Window functions and ranking
+- Discount calculations and percentage analysis
 - Data quality checks
-- Aggregations
-- GROUP BY and HAVING
-- Sorting and filtering
-- CASE statements
-- NULL handling
-- Date-related analysis
-- JOINs
-- Subqueries
-- CTEs
-- UNION / EXCEPT
-- Window functions
-- Ranking analysis
 
-### Examples of Analysis
+**Analytical focus:**
+- Category-level price comparisons.
+- Brand-level comparisons.
+- Discount patterns.
+- Product pricing analysis.
+- Record-level data quality exploration.
 
-- Total sales by category
-- Sales by brand
-- Average product pricing
-- Discount analysis
-- Top-performing products
-- Product ranking
-- Customer analysis
-- Inventory analysis
-- Payment analysis
-- Store analysis
+SQL results should be interpreted in the context of the available product-level data. Price-based totals do not establish actual revenue.
 
-SQL queries are available in:
+### 3. Python Analysis — Pandas
 
-`SQL/DMart_Retail_Analytics.sql`
+**File:** [`Python/DMart_Retail_Analytics_Python.ipynb`](Python/DMart_Retail_Analytics_Python.ipynb)
 
----
+The Python notebook demonstrates a structured data analysis workflow using Pandas.
 
-# 🐍 Python Analysis
-
-Python was used for practical exploratory data analysis using **Pandas, NumPy and visualization libraries**.
-
-### Python Analysis Includes
-
-- Dataset inspection
-- Data quality checks
-- Missing-value analysis
-- Duplicate checks
-- Price validation
-- Zero-price validation
-- Data cleaning
-- Discount amount calculation
-- Discount percentage calculation
-- Overall sales analysis
-- Category analysis
-- Brand analysis
-- Product-level analysis
-- Business insights
-
-### Key Python Metrics
-
-After data-quality handling, the sales analysis focuses on valid pricing records.
-
-Key metrics include:
-
-- Total Sales
-- Total Discount
-- Average Selling Price
-- Average Discount Percentage
-- Category-level sales
-- Brand-level sales
-- Product-level sales
-
-Python notebook:
-
-`Python/DMart_Retail_Analytics_Python.ipynb`
-
----
-
-# 📊 Power BI Dashboard
-
-The Power BI project contains four analytical pages.
-
-### Page 1 — Executive Overview
-
-Key KPIs and overall retail performance:
-
-- Total Transactions
-- Total Sales
-- Total Discount
-- Average Selling Price
-- Average Discount %
-- Sales by Category
-- Sales by Brand
-- Average Discount by Category
-- Total Stock by Warehouse
-- Customers by Membership Type
-- Payment Status Distribution
-
-### Page 2 — Pricing & Discount Analysis
-
-- Average Selling Price by Category
-- Average Discount % by Brand
-- Original Value vs Discounted Value
-- Discounted Transaction %
-- Product Pricing & Discount Analysis
-
-### Page 3 — Inventory & Store Analysis
-
-- Low Stock Items by Store
-- Stock Available vs Reorder Level
-- Low Stock % by Warehouse
-- Total Store Size by Region
-- Average Store Age by Region
-
-### Page 4 — Customer & Payment Analysis
-
-- Customer Distribution by Gender
-- Customer Distribution by Age
-- Customer Distribution by State
-- Payments by Payment Method
-- Top Customers by City
-
-Power BI files and dashboard screenshots are available in:
-
-`PowerBI/`
-
----
-
-# 📗 Excel Analysis
-
-Excel was used to create a lightweight analyst-focused reporting workflow.
-
-### Excel Workbook Structure
-
-- `Raw_Data`
-- `Data_Cleaning`
-- `Analysis`
-- `Pivot_Analysis`
-- `Dashboard`
-
-### Excel Analysis Includes
-
-- Data quality checks
-- Record validation
-- Missing-value checks
-- Duplicate checks
-- Zero-price checks
-- KPI calculations
-- Category sales analysis
-- Brand sales analysis
-- Product sales analysis
-- Discount analysis
-- PivotTables
-- PivotCharts
-- Interactive-style dashboard presentation
-
-### Excel Dashboard KPIs
-
-| KPI | Value |
-|---|---:|
-| Total Transactions | 5,189 |
-| Total Sales | ₹12,27,843 |
-| Total Discount | ₹5,56,990 |
-| Average Selling Price | ₹236.67 |
-| Average Discount % | 26.39% |
-
-Excel files are available in:
-
-`Excel/`
-
----
-
-# 💡 Key Business Insights
-
-The analysis provides several useful retail insights:
-
-- **Cooking Oil** is one of the strongest categories by sales value.
-- Category-level analysis highlights the products and categories contributing the most sales.
-- **Unbranded products** contribute significant sales value and should be considered separately when evaluating brand performance.
-- Product-level discount analysis identifies products receiving relatively high absolute discounts.
-- Discount analysis helps identify areas where promotional pricing may have a significant effect on sales value.
-- Inventory analysis highlights products and warehouses requiring attention due to lower stock levels.
-- Customer and payment analysis provides visibility into customer demographics and payment outcomes.
-
-These insights can support decisions related to **pricing, promotions, inventory planning, product performance and customer analysis**.
-
----
-
-# 📁 Project Structure
-
-```text
-DMart-Retail-Analytics/
-│
-├── Excel/
-│   ├── DMart_Retail_Analytics_Excel.xlsx
-│   └── DMart-Retail-Analytics_Dashboard.png
-│
-├── PowerBI/
-│   ├── DMart-Retail-Analytics.pbix
-│   ├── README.md
-│   ├── 01_Executive_Overview.png
-│   ├── 02_Pricing_Discount_Analysis.png
-│   ├── 03_Inventory_Store_Analysis.png
-│   └── 04_Customer_Payment_Analysis.png
-│
-├── Python/
-│   └── DMart_Retail_Analytics_Python.ipynb
-│
-├── SQL/
-│   └── DMart_Retail_Analytics.sql
-│
-└── README.md
+**Key activities:**
+- Loading and inspecting the dataset
