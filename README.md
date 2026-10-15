@@ -6,11 +6,13 @@ This project explores product pricing, discounts, and retail-related data using 
 
 The central business question is:
 
-**“Why does DMart appear to offer so many discounts compared with other retail shops?”**
+**Why does DMart appear to offer so many discounts compared with other retail shops?**
 
-The project examines available product-price and discount patterns and combines these observations with publicly available information about DMart's pricing strategy.
+The project examines available product-price and discount patterns and considers publicly documented information about DMart's pricing strategy.
 
 **Important distinction:** The available dataset allows us to explore recorded product prices and discounts. It does not contain comparable competitor pricing data, so this project cannot statistically establish that DMart offers more discounts or lower prices than other retailers.
+
+---
 
 ## 🎯 Business Objectives
 
@@ -22,6 +24,8 @@ The project examines available product-price and discount patterns and combines 
 - Use SQL to perform structured data exploration and analysis.
 - Understand DMart's publicly documented pricing strategy.
 - Distinguish data-supported findings from business explanations that require further evidence.
+
+---
 
 ## ❓ Business Question: Why Does DMart Appear to Offer So Many Discounts?
 
@@ -35,7 +39,7 @@ The available product-pricing records allow us to examine:
 - Differences between branded and unbranded product records.
 - Missing values, duplicate records, and potentially invalid prices.
 
-These analyses help describe the pricing patterns present in the dataset. They do not independently explain the commercial reasons behind those patterns.
+These analyses describe the pricing patterns present in the dataset. They do not independently explain the commercial reasons behind those patterns.
 
 ### 2. What DMart's published strategy tells us
 
@@ -75,6 +79,8 @@ It could then compare:
 
 This would help test whether the perception of more offers corresponds to measurable differences in pricing.
 
+---
+
 ## 🗂️ Dataset Overview
 
 The project uses DMart-inspired retail datasets covering the following areas:
@@ -97,19 +103,23 @@ The source sales/pricing dataset contains **5,189 records**.
 - The `Quantity` field contains package or unit descriptions in the available data; it should not automatically be interpreted as units sold.
 - Metrics labelled **Total Sales** represent sums of available discounted-price values, not confirmed business revenue.
 - Record counts may differ across tools because of cleaning, exclusions, and filters.
-- Python's previously reported analysis contained 5,187 records after cleaning, compared with the 5,189 source records. The precise exclusions should be verified against a valid notebook before treating the results as fully reconciled.
+- Python's previously reported analysis contained 5,187 records after cleaning, compared with the 5,189 source records. The precise exclusions have not been independently revalidated against the original raw dataset.
 - The customer, inventory, payment, store, and sales datasets have limited matching keys. Cross-table comparisons should only be interpreted where valid relationships exist.
-- The original raw dataset is not currently available for a complete independent revalidation of every result.
+- The original raw dataset is no longer available for a complete independent revalidation of every result.
+
+---
 
 ## 🛠️ Tools and Technologies
 
 | Tool | Application |
 |---|---|
 | Microsoft Excel | Data preparation, formulas, PivotTables, analysis, and dashboard |
-| PostgreSQL | Data exploration, aggregation, filtering, joins, and analytical queries |
-| Python / Pandas | Data cleaning and exploratory analysis; notebook awaiting valid-file restoration and verification |
+| PostgreSQL / SQL | Data exploration, aggregation, filtering, joins, and analytical queries |
+| Python / Pandas | Data inspection, data cleaning, exploratory analysis, and price and discount comparisons |
 | Power BI | DAX measures, data modelling, interactive visuals, and dashboards |
 | GitHub | Project documentation, file organization, and portfolio presentation |
+
+---
 
 ## 📊 Project Components
 
@@ -126,6 +136,7 @@ The workbook includes:
 - `Dashboard` — consolidated visual summary.
 
 **Analysis performed:**
+
 - Price and discount calculations.
 - Category-level and brand-level comparisons.
 - PivotTable-based summaries.
@@ -135,11 +146,13 @@ The workbook includes:
 
 ![DMart Retail Analytics Excel Dashboard](Excel/DMart-Retail-Analytics_Dashboard.png)
 
+[Open Excel dashboard image](Excel/DMart-Retail-Analytics_Dashboard.png)
+
 ### 2. SQL Analysis — PostgreSQL
 
 **SQL file:** [`SQL/DMart_Retail_Analytics.sql`](SQL/DMart_Retail_Analytics.sql)
 
-The project SQL file contains 50 analytical queries covering data exploration, aggregation, pricing, discounts, and data-quality analysis.
+The project SQL file contains **50 analytical queries** covering data exploration, aggregation, pricing, discounts, and data-quality analysis.
 
 **SQL concepts demonstrated:**
 
@@ -157,19 +170,32 @@ The queries explore the available records. Price-based aggregations should not b
 
 ### 3. Python Analysis — Pandas
 
-**Intended notebook:** [`Python/DMart_Retail_Analytics_Python.ipynb`](Python/DMart_Retail_Analytics_Python.ipynb)
+**Notebook:** [`Python/DMart_Retail_Analytics_Python.ipynb`](Python/DMart_Retail_Analytics_Python.ipynb)
 
-The Python notebook is intended to document the Pandas workflow for data inspection, cleaning, descriptive analysis, and price and discount comparisons.
+The Python notebook documents the exploratory data analysis workflow using Python and Pandas.
 
-**Current status:** The uploaded notebook requires restoration and validation. It should not be treated as a verified project deliverable until a valid notebook containing the original work has been recovered and uploaded.
+The analysis covers:
 
-No Python results are presented here as independently verified final results.
+- Dataset inspection.
+- Data-quality checks.
+- Missing-value and duplicate checks.
+- Price validation.
+- Data cleaning.
+- Discount amount and percentage calculations.
+- Descriptive statistics.
+- Category-level and brand-level comparisons.
+- Product-level analysis.
+- Business observations.
+
+**Notebook status:** The recovered notebook has been uploaded to GitHub and its contents are visible in the repository preview.
+
+**Data limitation:** The original raw dataset is no longer available for a complete independent rerun of the analysis. Previously reported Python results should therefore be interpreted alongside the documented cleaning steps and metric definitions.
 
 ### 4. Power BI Dashboard
 
 **Report:** [`PowerBI/DMart-Retail-Analytics.pbix`](PowerBI/DMart-Retail-Analytics.pbix)
 
-The report contains four dashboard pages.
+The Power BI report contains four analytical pages.
 
 #### Page 1 — Executive Overview
 
@@ -177,17 +203,23 @@ The report contains four dashboard pages.
 
 Summarizes the available pricing records and selected analytical indicators.
 
+[Open Executive Overview](PowerBI/01_Executive_Overview.png)
+
 #### Page 2 — Pricing and Discount Analysis
 
 ![Pricing and Discount Analysis](PowerBI/02_Pricing_Discount_Analysis.png)
 
 Explores original prices, discounted prices, discount percentages, and category and brand comparisons.
 
+[Open Pricing and Discount Analysis](PowerBI/02_Pricing_Discount_Analysis.png)
+
 #### Page 3 — Inventory and Store Analysis
 
 ![Inventory and Store Analysis](PowerBI/03_Inventory_Store_Analysis.png)
 
-Examines available inventory and store information, subject to the valid relationships and matching keys in the datasets.
+Examines available inventory and store information, subject to valid relationships and matching keys in the datasets.
+
+[Open Inventory and Store Analysis](PowerBI/03_Inventory_Store_Analysis.png)
 
 #### Page 4 — Customer and Payment Analysis
 
@@ -195,7 +227,11 @@ Examines available inventory and store information, subject to the valid relatio
 
 Presents available customer and payment-related information, subject to the fields and relationships supported by the datasets.
 
+[Open Customer and Payment Analysis](PowerBI/04_Customer_Payment_Analysis.png)
+
 **Power BI documentation:** [`PowerBI/README.md`](PowerBI/README.md)
+
+---
 
 ## 🔍 Key Analytical Observations
 
@@ -210,6 +246,8 @@ The project investigates the following areas:
 
 These observations describe the supplied datasets. They should not be interpreted as verified conclusions about DMart's company-wide revenue, profitability, customer behaviour, or pricing relative to competitors.
 
+---
+
 ## 💡 Business Conclusion
 
 DMart's publicly documented EDLC/EDLP strategy emphasizes everyday value supported by cost-conscious procurement and operations, supply-chain efficiencies, and appropriate product assortment.
@@ -219,6 +257,8 @@ The product-pricing analysis provides a way to explore the prices and discounts 
 The appropriate conclusion is that DMart's published strategy provides a plausible business context for its value positioning, while a direct competitor comparison would require additional comparable pricing data.
 
 This distinction between observed data and business context is an important part of responsible data analysis.
+
+---
 
 ## 🧹 Data Quality and Validation
 
@@ -233,6 +273,10 @@ The project considers the following data-quality dimensions:
 - Metric definitions and interpretation.
 
 The source sales/pricing dataset contains 5,189 records. Differences in counts after cleaning or filtering should be interpreted using each tool's actual transformation rules.
+
+Because the original raw dataset is no longer available, every result cannot currently be independently revalidated against the original source.
+
+---
 
 ## 📁 Repository Structure
 
@@ -260,28 +304,34 @@ DMart-Retail-Analytics/
 └── README.md
 ```
 
+---
+
 ## 🚀 Skills Demonstrated
 
-- Data cleaning and quality checks
-- Exploratory data analysis
-- SQL querying and aggregation
-- Joins, subqueries, CTEs, and window functions
-- Excel formulas and PivotTables
-- Power BI dashboards and DAX
-- Data visualization
-- Business-question framing
-- Evidence-based interpretation
-- Documentation and GitHub project organization
+- Data cleaning and quality checks.
+- Exploratory data analysis.
+- SQL querying and aggregation.
+- Joins, subqueries, CTEs, and window functions.
+- Excel formulas and PivotTables.
+- Power BI dashboards and DAX.
+- Data visualization.
+- Business-question framing.
+- Evidence-based interpretation.
+- Documentation and GitHub project organization.
 
-*Python notebook restoration and validation remain pending.*
+---
 
 ## 👩‍💻 About the Analyst
 
-I am a Computer Engineering graduate with professional experience in renewable energy operations, billing, receivables monitoring, and monthly MIS reporting. I am developing my Data Analytics portfolio to apply analytical thinking, SQL, spreadsheet analysis, and data visualization to business problems.
+I am a Computer Engineering graduate with professional experience in renewable energy operations, billing, receivables monitoring, and monthly MIS reporting.
+
+I am developing my Data Analytics portfolio to apply analytical thinking, SQL, spreadsheet analysis, and data visualization to business problems.
 
 **Areas of interest:** Data Analyst, Business Analyst, Reporting Analyst, and BI Analyst roles.
 
 **Tools:** Excel | SQL | Power BI | Python/Pandas
+
+---
 
 ## 🔗 Connect
 
